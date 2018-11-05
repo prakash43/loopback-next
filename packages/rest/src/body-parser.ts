@@ -212,7 +212,7 @@ export class RequestBodyParser {
     const requestBody: RequestBody = {
       value: undefined,
     };
-    if (!operationSpec.requestBody) return Promise.resolve(requestBody);
+    if (!operationSpec.requestBody) return requestBody;
 
     debug('Request body parser options: %j', options);
 
@@ -243,6 +243,11 @@ export class RequestBodyParser {
         debug('Matched media type: %s -> %s', type, contentType);
         requestBody.mediaType = type;
         requestBody.schema = content[type].schema;
+        // Skip body parsing as the controller method wants to have full control
+        if (content[type]['x-skip-body-parsing']) {
+          requestBody.value = request;
+          return requestBody;
+        }
         break;
       }
     }
