@@ -15,22 +15,19 @@ application.
 
 ### Prerequisite
 
-Make sure you have a running LoopBack 4 application. In this tutorial, we'll use
-the `todo` example. You can create this application by running the command
-below:
+1.  Install the OASGraph CLI globally by running:
 
-```sh
-lb4 example todo
-```
+    ```sh
+    npm i -g oasgraph-cli
+    ```
 
-### Install OASGraph and Required Dependencies
+2.  Make sure you have a running LoopBack 4 application. In this tutorial, we'll
+    use the `todo` example. You can create this application by running the
+    command below:
 
-From your LoopBack application, run the following command to install OASGraph
-and the required dependencies:
-
-```sh
-npm i --save oasgraph express express-graphql
-```
+    ```sh
+    lb4 example todo
+    ```
 
 ### Start the GraphQL Server
 
@@ -44,13 +41,8 @@ todo-application as the parameter, start up the server by running the following
 command:
 
 ```sh
-npx oasgraph http://localhost:3000/openapi.json
+oasgraph http://localhost:3000/openapi.json
 ```
-
-_Haven't heard about `npx` yet? It's a cool helper provided by `npm` and
-available out of the box since Node.js 8.x. Learn more in their announcement
-blog post:
-[Introducing npx: an npm package runner](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b))_
 
 That’s it! You’re now ready to try out some tests and requests in the browser at
 http://localhost:3001/graphql.
